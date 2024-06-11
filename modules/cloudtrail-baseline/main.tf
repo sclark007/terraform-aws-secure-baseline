@@ -238,7 +238,7 @@ resource "aws_cloudtrail" "global" {
   include_global_service_events = true
   is_multi_region_trail         = true
   is_organization_trail         = var.is_organization_trail
-  kms_key_id                    = var.cloudtrail_kms_customer_managed ? aws_kms_key.cloudtrail.arn : null
+  kms_key_id                    = var.cloudtrail_kms_customer_managed ? aws_kms_key.cloudtrail[0].arn : null
   s3_bucket_name                = var.s3_bucket_name
   s3_key_prefix                 = var.s3_key_prefix
   sns_topic_name                = var.cloudtrail_sns_topic_enabled ? aws_sns_topic.cloudtrail-sns-topic[0].arn : null
